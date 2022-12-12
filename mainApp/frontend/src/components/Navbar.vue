@@ -9,10 +9,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <router-link to="/" class="nav-link">Home</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <router-link to="/profile" class="nav-link">Profile</router-link>
                 </li>
             </ul>
             

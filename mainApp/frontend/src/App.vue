@@ -5,8 +5,13 @@ import Profile from './components/Profile.vue'
 import Login from './components/Login.vue'
 </script>
 
+
+
 <template>
 <Navbar />
+<main>
+      <router-view :key="$route.path" />
+</main>
 </template>
 
 <style scoped>
