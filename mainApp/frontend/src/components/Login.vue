@@ -1,5 +1,5 @@
 <template>
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="row h-100 justify-content-center align-items-center" style="min-width: 320px; min-height: 100vh">
         <div class="col-10 col-md-8 col-lg-4">
             <div class="border rounded bg-light shadow p-5 ">
                 <h1 class="h3 mb-4">Sign In</h1>
