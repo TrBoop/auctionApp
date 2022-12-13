@@ -24,7 +24,7 @@ class CustomUser(AbstractUser):
 
     """ Returns object name """
     def __str__(self):
-        return self.userName
+        return self.username
 
     """ Converts the variables to dictionary """
     def to_dict(self):
