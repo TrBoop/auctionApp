@@ -38,6 +38,7 @@ class CustomUser(AbstractUser):
 
 
         }
+        
     #orders db entries by email address and names the table User
     class Meta:
         ordering = ["userEmail"]

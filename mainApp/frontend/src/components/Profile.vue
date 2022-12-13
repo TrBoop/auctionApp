@@ -12,13 +12,11 @@
                 <br/>
                 <input type="text" id="inputUser" class="form-control" placeholder="Username"/>
                 <br/>
-                <input type="date" id="birthday" class="form-control" name="birthday"/>
+                <input type="date" id="inputDOB" class="form-control"/>
                 <br/>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
                 <br/>
-                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required />
-                <br/>
-                <div class="d-grid gap-2 col-6 mx-auto">
+                <div class="d-grid gap-2 col-8 mx-auto">
                     <button class="btn btn-primary" type="submit">Save Changes</button>
                 </div>
 

@@ -10,9 +10,11 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary" type="submit">Sign In</button>
                 </div>
+                <p><br/>Not a member? <router-link to="/register" class="nav-link" tag="button" style="color:blue; text-decoration:underline;">Register</router-link></p>
                 
-                <!-- The a href needs to be replaced by a router -->
-                <p><br/>Not a member? <a href="#!">Register</a></p> 
+
+                
+                
             </div>
         </div>
     </div>

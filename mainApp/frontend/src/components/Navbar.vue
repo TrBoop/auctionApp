@@ -19,7 +19,7 @@
             <ul class="navbar-nav">
               
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Sign Out</a>
+                    <router-link to="/login" class="nav-link">Sign Out</router-link>
                 </li>
             </ul>
         </div>
