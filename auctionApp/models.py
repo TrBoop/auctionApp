@@ -50,7 +50,7 @@ class Auction(models.Model):
     itemStartPrice = models.IntegerField()
     itemPicture = models.ImageField()
     itemFinishDate = models.DateField('Finish Date')
-    CustomUser.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    CustomUser.id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.itemTitle
@@ -63,19 +63,19 @@ class Auction(models.Model):
             'starting' : self.itemStartPrice,
             'picture' : self.itemPicture,
             'finish' : self.itemFinishDate,
-            'owner' : self.CustomUser.ID
+            'owner' : self.CustomUser.id,
         }
 
 
 class Bid(models.Model):
-    CustomUser.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    CustomUser.id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     bidAmount = models.IntegerField()
-    Auction.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    Auction.id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def to_dict(self):
         return {
             'id' : self.id,
-            'bidder' : self.CustomUser.ID,
+            'bidder' : self.CustomUser.id,
             'amount' : self.bidAmount,
-            'item' : self.Auction.ID
+            'item' : self.Auction.id,
         }
