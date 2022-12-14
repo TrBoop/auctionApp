@@ -43,3 +43,39 @@ class CustomUser(AbstractUser):
     class Meta:
         ordering = ["userEmail"]
         verbose_name = "User"
+
+class Auction(models.Model):
+    itemTitle = models.CharField(max_length=255)
+    itemDescription = models.CharField(max_length=255)
+    itemStartPrice = models.IntegerField()
+    itemPicture = models.ImageField()
+    itemFinishDate = models.DateField('Finish Date')
+    CustomUser.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.itemTitle
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'title' : self.itemTitle,
+            'description' : self.itemDescription,
+            'starting' : self.itemStartPrice,
+            'picture' : self.itemPicture,
+            'finish' : self.itemFinishDate,
+            'owner' : self.CustomUser.ID
+        }
+
+
+class Bid(models.Model):
+    CustomUser.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    bidAmount = models.IntegerField()
+    Auction.ID = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'bidder' : self.CustomUser.ID,
+            'amount' : self.bidAmount,
+            'item' : self.Auction.ID
+        }
