@@ -175,7 +175,7 @@ import Navbar from './components/Navbar.vue'
         this.bid = {};
       },
 
-      async updateUser(){
+      async updateBid(){
         await this.getBids();
         await fetch(`http://127.0.0.1:8000/api/bids/${this.bid.id}/`,{
           method: 'put',
