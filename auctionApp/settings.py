@@ -57,14 +57,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'auctionApp.urls'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",    
-]
-
-ROOT_URLCONF = 'mainApp.urls'
-
-APPEND_SLASH=False
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
