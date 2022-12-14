@@ -70,7 +70,7 @@ class Auction(models.Model):
 class Bid(models.Model):
     CustomUser.id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     bidAmount = models.IntegerField()
-    Auction.id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    Auction.id = models.ForeignKey(Auction, on_delete=models.CASCADE)
 
     def to_dict(self):
         return {
