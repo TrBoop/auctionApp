@@ -1,4 +1,9 @@
 <script>
+import Profile from './components/Profile.vue'
+import Login from './components/Login.vue'
+import Home from './components/Home.vue'
+import Navbar from './components/Navbar.vue'
+
   export default{
     name: 'App',
     data(){
@@ -71,7 +76,14 @@
         });
         await this.getUsers();
       }
-    }
+    },
+
+    
+      name: 'app',
+      components: {
+      Navbar
+  }
+
   }
 </script>
 
