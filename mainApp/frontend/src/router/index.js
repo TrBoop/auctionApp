@@ -4,6 +4,7 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import Home from '../components/Home.vue'
 import Profile from '../components/Profile.vue'
+import NewItem from '../components/NewItem.vue'
 
 const routes = [
 	{
@@ -25,6 +26,11 @@ const routes = [
 		path: '/profile',
 		name: 'Profile',
 		component: Profile,
+	},
+	{
+		path: '/newitem',
+		name: 'NewItem',
+		component: NewItem,
 	}
 ]
 const router = createRouter({
