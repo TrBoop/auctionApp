@@ -54,10 +54,10 @@
                 this.errorInvalidEmail = false;
 
                 const inputdata = {
-                    userEmail: this.inputEmail,
+                    password: this.inputPassword,
                     username: this.inputUser,
+                    userEmail: this.inputEmail,
                     userDateOfBirth: this.inputDOB,
-                    userPassword: this.inputPassword,
                 };
                 console.log(inputdata);
 
