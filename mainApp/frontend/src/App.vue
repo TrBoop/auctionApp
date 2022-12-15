@@ -8,6 +8,8 @@ import Profile from './components/Profile.vue'
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Navbar from './components/Navbar.vue'
+import NewItem from './components/NewItem.vue'
+import Register from './components/Register.vue'
 
   export default{
     name: 'App',
