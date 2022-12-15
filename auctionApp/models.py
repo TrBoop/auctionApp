@@ -77,3 +77,29 @@ class Bid(models.Model):
             'amount' : self.bidAmount,
             'item' : self.auctionId,
         }
+
+class Question(models.Model):
+    auctionId = models.ForeignKey(Auction, on_delete=models.CASCADE)
+    questionText = models.CharField(max_length=255)
+    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'user' : self.userId,
+            'question' : self.questionText,
+            'item' : self.auctionId,
+        }
+
+class Answer(models.Model):
+    questionId = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answerText = models.CharField(max_length=255)
+    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'user' : self.userId,
+            'answer' : self.answerText,
+            'question' : self.questionId,
+        }
