@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
     userDateOfBirth = models.DateField(max_length=8)
 
     #images in a model: https://stackoverflow.com/questions/6396442/add-image-avatar-field-to-users
-    userImage = models.ImageField(upload_to='images')
+    userImage = models.ImageField(upload_to='images', default = './images/defaultProf.png')
 
     USERNAME_FIELD = 'userEmail'
     REQUIRED_FIELDS = ['username', 'userDateOfBirth']
@@ -35,8 +35,6 @@ class CustomUser(AbstractUser):
             'email' : self.userEmail,
             'image' :self.userImage,
             'DateOfBirth' : self.userDateOfBirth,
-
-
         }
         
     #orders db entries by email address and names the table User

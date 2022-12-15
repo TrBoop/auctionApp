@@ -1,3 +1,8 @@
+<template>
+  <Navbar/>
+  <router-view :key="$route.path" />
+</template>
+
 <script>
 import Profile from './components/Profile.vue'
 import Login from './components/Login.vue'
@@ -38,6 +43,7 @@ import Navbar from './components/Navbar.vue'
 
     async created(){
        await this.getUsers();
+       console.log(this.users);
       },
     methods:{
 
@@ -68,6 +74,8 @@ import Navbar from './components/Navbar.vue'
         await this.getUsers();
         this.user = {};
       },
+
+      
 
       async updateUser(){
         await this.getUsers();
@@ -210,10 +218,7 @@ import Navbar from './components/Navbar.vue'
   }
 </script>
 
-<template>
-  <Navbar/>
-  <router-view :key="$route.path" />
-</template>
+
 
 <style scoped>
 .logo {
