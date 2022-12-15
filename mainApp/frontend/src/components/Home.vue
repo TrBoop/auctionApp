@@ -22,9 +22,9 @@
         <tbody>
           <tr class="align-middle" v-for="auction in auctions" :key ="auction.itemFinishDate" @dblclick="$data.auction = auction" >
             <td>{{auction.itemTitle}} </td>
-            <td>{{auction.itemPicture}} </td>
+            <td><img src ={{auction.itemPicture}}/></td>
             <td>{{auction.itemStartPrice}} </td>
-            <td>{{itemFinishDate}} </td>
+            <td>{{auction.itemFinishDate}}</td>
             <td><button type="button" class="btn btn-primary">Info</button></td>
           </tr>
         </tbody>
@@ -55,14 +55,6 @@
        await this.getAuctions();
       },
       methods:{
-        submitAuction(){
-        if(this.auction.id ===undefined){
-          this.addAuction();
-        }
-        else{
-          this.updateAuction();
-        }
-      },
 
       async getAuctions(){
         var response = await fetch("http://127.0.0.1:8000/api/auction/")
@@ -71,7 +63,7 @@
       },
 
       async addAuction(){
-        await this.getAuction();
+        await this.getAuctions();
         await fetch("http://127.0.0.1:8000/api/auction/",{
           method: 'post',
           headers: {
@@ -95,18 +87,6 @@
         await this.getAuctions();
         this.auction = {};
       },
-
-      async deleteAuction(auction){
-        await this.getAuctions();
-        await fetch(`http://127.0.0.1:8000/api/auction/${auction.id}/`,{
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(this.auction)  
-        });
-        await this.getAuctions();
-      },  
       }
 
   }

@@ -21,3 +21,25 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default{
+        name: 'NewItem',
+        data(){
+            return{
+                newAuction:{
+                    'itemTitle':'',
+                    'itemDescription':'',
+                    'itemStartPrice':'',
+                    'itemPicture': '',
+                    'itemFinishDate':'',
+                    'ownerId':'',      
+                }
+            }
+        },
+        methods:{ 
+        } 
+    }
+
+
+</script>
