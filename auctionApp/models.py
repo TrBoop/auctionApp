@@ -44,7 +44,7 @@ class Auction(models.Model):
     itemTitle = models.CharField(max_length=255)
     itemDescription = models.CharField(max_length=255)
     itemStartPrice = models.IntegerField()
-    itemPicture = models.ImageField()
+    itemPicture = models.ImageField(upload_to='images')
     itemFinishDate = models.DateField('Finish Date')
     ownerId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     
