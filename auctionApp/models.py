@@ -15,8 +15,8 @@ class CustomUser(AbstractUser):
     #images in a model: https://stackoverflow.com/questions/6396442/add-image-avatar-field-to-users
     userImage = models.ImageField(upload_to='images', default = './images/defaultProf.png')
 
-    USERNAME_FIELD = 'userEmail'
-    REQUIRED_FIELDS = ['username', 'userDateOfBirth']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['userEmail', 'userDateOfBirth']
 
     objects = UserManager()
 

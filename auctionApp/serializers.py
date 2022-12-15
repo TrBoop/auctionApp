@@ -6,7 +6,8 @@ class UserSerializer(serializers.ModelSerializer):
 #creates a dictionary for the data in our db 
     class Meta:
         model = CustomUser
-        fields = ['password',
+        fields = [
+                  'password',
                   'username',
                   'userEmail',
                   'userDateOfBirth',
@@ -29,7 +30,6 @@ class BidSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bid
         fields = ['id',
-                #need to change later
                   'userId',
                   'bidAmount',
                   'auctionId'] 
