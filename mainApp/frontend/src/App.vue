@@ -204,7 +204,12 @@ import Navbar from './components/Navbar.vue'
     
       name: 'app',
       components: {
-      Navbar
+      Navbar,
+      Login,
+      Home,
+      NewItem,
+      Profile,
+      Register
   }
 
   }
