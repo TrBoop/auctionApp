@@ -8,6 +8,8 @@
             <div class="border rounded bg-light p-5 ">
                 <h1 class="h3 mb-4">Edit Profile</h1>
                 <br/>
+                <input type="file" accept="image/*" id="inputTitle" class="form-control" placeholder="Image"/>
+                <br/>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address"/>
                 <br/>
                 <input type="text" id="inputUser" class="form-control" placeholder="Username"/>
