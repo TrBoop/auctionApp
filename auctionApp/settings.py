@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "auctionApp",
     'mainApp',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'auctionApp.CustomUser'
