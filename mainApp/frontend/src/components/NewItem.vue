@@ -13,7 +13,7 @@
                     <br/>
                     <input type="date" id="inputEnd" class="form-control" required v-model="newAuction.itemFinishDate"/>
                     <br/>
-                    <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.itemTitle"/>
+                    <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.StartPrice"/>
                     <br/>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button class="btn btn-primary" type="submit" @click = "addAuction()">Submit Item</button>
