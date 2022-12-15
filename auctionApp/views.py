@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.viewsets import ModelViewSet
 from .models import CustomUser, Auction, Bid
-from .serializers import UserSerializer, AuctionSerializer
+from .serializers import UserSerializer, AuctionSerializer, BidSerializer
 #Serializes data from db
 class UserViewSet(ModelViewSet):
     queryset = CustomUser.objects.all()

@@ -22,15 +22,15 @@ class AuctionSerializer(serializers.ModelSerializer):
                   'itemDescription',
                   'ItemStartPrice',
                   'itemPicture',
-                  'itemFinishDate'] 
+                  'itemFinishDate',
+                  'ownerId'] 
 
 class BidSerializer(serializers.ModelSerializer):
 #creates a dictionary for the data in our db 
     class Meta:
         model = Bid
         fields = ['id',
-                  'userPassword',
-                  'username',
-                  'userEmail',
-                  'userDateOfBirth',
-                  'userImage'] 
+                #need to change later
+                  'userId',
+                  'bidAmount',
+                  'auctionId'] 
