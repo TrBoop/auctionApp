@@ -17,7 +17,6 @@ import Register from './components/Register.vue'
       return{
         users: [],
         user:{
-          'userPassword': '',
           'username': '',
           'userEmail': '',
           'userDateOfBirth': '',
@@ -30,15 +29,13 @@ import Register from './components/Register.vue'
           'itemStartPrice':'',
           'itemPicture': '',
           'itemFinishDate':'',
-          //possible problem her with naming of the model
-          'CustomUser.id':'',
+          'ownerId':'',
         },
         bids : [],
         bid : {
-          //again wrong naming probably
-          'CustomUser.id': '',
+          'userId': '',
           'bidAmount': '',
-          'Auction.id':'',
+          'auctionId':'',
         }
       } 
     },

@@ -8,7 +8,6 @@ class CustomUser(AbstractUser):
 
 #resource used to construct model: https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
 
-    userPassword = models.CharField(max_length=40)
     username = models.CharField(max_length=40, unique = True, primary_key=True)
     userEmail = models.EmailField(max_length = 254, unique = True)
     userDateOfBirth = models.DateField(max_length=8)
@@ -31,7 +30,6 @@ class CustomUser(AbstractUser):
         return {
             'id' : self.id,
             'username': self.username,
-            'password': self.userPassword,
             'email' : self.userEmail,
             'image' :self.userImage,
             'DateOfBirth' : self.userDateOfBirth,

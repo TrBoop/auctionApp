@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id',
-                  'userPassword',
+                  'password',
                   'username',
                   'userEmail',
                   'userDateOfBirth',
@@ -20,7 +20,7 @@ class AuctionSerializer(serializers.ModelSerializer):
         fields = ['id',
                   'itemTitle',
                   'itemDescription',
-                  'ItemStartPrice',
+                  'itemStartPrice',
                   'itemPicture',
                   'itemFinishDate',
                   'ownerId'] 
