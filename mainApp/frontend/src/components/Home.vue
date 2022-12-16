@@ -24,24 +24,56 @@
               <td v-if="skippableDate(auction.itemFinishDate)"><img src="{{auction.itemPicture}}"/></td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
-              <td v-if="skippableDate(auction.itemFinishDate)"></td> 
+              <td v-if="skippableDate(auction.itemFinishDate)"></td>
+              <td>
+                <tr><input type=number min="0"/></tr>
+                <tr><button type="button" class="btn btn-primary">Bid Amount</button></tr>
+              </td>
               <td>
                 <tr><textarea/></tr>
                 <tr><button type="button" class="btn btn-primary">Submit Question</button></tr>
               </td>
     
             </tr>
-           
-          <tr>
-            <th scope="col">Q&A</th>
+          
+          
+          <tr> 
+            <th></th> <!-- Leave Empty -->
+            <th scope="col">Questions</th>
           </tr>
           <tr>
+            <th></th> <!-- Leave Empty -->
             <th scope="col">User</th>
             <th scope="col">Question</th>
           </tr>
-         
-         
           
+          <tr>  <!-- V-for questions -->
+            <td></td> <!-- Leave Empty -->
+            <td></td> <!-- GET Userid from question -->
+            <td></td> <!-- GET question from question -->
+
+            <tr>
+              <th></th> <!-- Leave Empty -->
+              <th></th> <!-- Leave Empty -->
+              <th scope="col">Answer</th>
+            </tr>
+
+            <tr>
+              <td></td> <!-- Leave Empty -->
+              <td></td> <!-- Leave Empty -->
+              <td></td> <!-- Leave Empty -->
+              <td>
+                <tr><textarea/></tr>
+                <tr><button type="button" class="btn btn-primary">Submit Answer</button></tr>
+              </td>
+            </tr>
+
+          </tr>
+
+          
+          
+
+
         </tbody>
       </table>
 
