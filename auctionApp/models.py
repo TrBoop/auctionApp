@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     userDateOfBirth = models.DateField(max_length=8)
 
     #images in a model: https://stackoverflow.com/questions/6396442/add-image-avatar-field-to-users
-    userImage = models.URLField(max_length=128)
+    userImage = models.URLField(max_length=1000)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['userEmail', 'userDateOfBirth']
@@ -44,7 +44,7 @@ class Auction(models.Model):
     itemTitle = models.CharField(max_length=255)
     itemDescription = models.CharField(max_length=255)
     itemStartPrice = models.IntegerField()
-    itemPicture = models.URLField(max_length=128,)
+    itemPicture = models.URLField(max_length=1000,)
     itemFinishDate = models.DateField('Finish Date')
     ownerId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     

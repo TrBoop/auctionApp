@@ -9,15 +9,11 @@
                     <br/>
                     <textarea id="inputDescription" class="form-control" placeholder="Item Description" v-model="newAuction.itemDescription"/>
                     <br/>
-                    <input type="file" accept="image/*" id="inputTitle" class="form-control" placeholder="Image"/>
+                    <input type="url" id="inputTitle" class="form-control" placeholder="Item Image (Link)" v-model="newAuction.itemPicture"/>
                     <br/>
                     <input type="date" id="inputEnd" class="form-control" required v-model="newAuction.itemFinishDate"/>
                     <br/>
-<<<<<<< HEAD
                     <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.itemStartPrice"/>
-=======
-                    <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.StartPrice"/>
->>>>>>> 730000fb5d57c3240769fa4061626790233d4bb8
                     <br/>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button class="btn btn-primary" type="submit" @click = "addAuction()">Submit Item</button>
@@ -39,14 +35,16 @@
                     'itemStartPrice':'',
                     'itemPicture': '',
                     'itemFinishDate':'',
+                    //need to remove 2 just TESTING
                     'ownerId':'',      
                 }
             }
         },
         methods:{
-
-            async addAuction(){
-        await fetch("http://127.0.0.1:8000/api/auction/?format=json",{
+        //TODO need to link user session to ownerId in order to post
+        async addAuction(){
+            this.newAuction.ownerId = 2;
+            await fetch("http://127.0.0.1:8000/api/auction/",{
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
@@ -55,18 +53,8 @@
         });
         this.newAuction = {};
         }, 
-        uploadImg(){
-            var files = this.$$.img.files;
-            this.newAuction.itemPicture.append('img', files[0]);
-        },
 
-        async getAuctions(){
-        var response = await fetch("http://127.0.0.1:8000/api/auction/")
-        let data = await response.json()
-        this.auctions = data 
-      },
-
-        } 
+     } 
         
     }
 
