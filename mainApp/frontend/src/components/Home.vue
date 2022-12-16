@@ -5,12 +5,11 @@
 <h1> Listings </h1>
 <div class="d-grid gap-2 col-6 mx-auto">
     <button class="btn btn-primary" type="submit"> <router-link to="/newitem" class="nav-link">New Item</router-link></button>
-    <button class="btn btn-primary" type="submit" @click="getAuctions()" >display</button>
 </div>
 <br/>
 <div class="row">
 
-<table class="table table-striped border rounded bg-light shadow">
+<table class="table border rounded bg-light shadow">
         <thead>
           <tr>
             <th scope="col">Item Title</th>
@@ -19,18 +18,30 @@
             <th scope="col">Ending</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="align-middle" v-for="auction in auctions" :key ="auction.itemFinishDate" @dblclick="$data.auction = auction">
+        <tbody class="align-middle" v-for="auction in auctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
+          <tr style="background:#E1E1E1;">
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
-              <td v-if="skippableDate(auction.itemFinishDate)"><img src ={{auction.itemPicture}}/></td>
+              <td v-if="skippableDate(auction.itemFinishDate)"><img src="{{auction.itemPicture}}"/></td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
-              <td v-if="skippableDate(auction.itemFinishDate)"><button type="button" class="btn btn-primary">Info</button></td>
-              <div class="comments">
-                <p></p>
-              </div>  
+              <td v-if="skippableDate(auction.itemFinishDate)"></td> 
+              <td>
+                <tr><textarea/></tr>
+                <tr><button type="button" class="btn btn-primary">Submit Question</button></tr>
+              </td>
+    
+            </tr>
+           
+          <tr>
+            <th scope="col">Q&A</th>
           </tr>
-          <p>Hello</p>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Question</th>
+          </tr>
+         
+         
+          
         </tbody>
       </table>
 
