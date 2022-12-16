@@ -47,10 +47,10 @@
             <th scope="col">Question</th>
           </tr>
           
-          <tr>  <!-- V-for questions -->
+          <tr v-for="question in questions" :key="question.questionId">  
             <td></td> <!-- Leave Empty -->
-            <td></td> <!-- GET Userid from question -->
-            <td></td> <!-- GET question from question -->
+            <td>{{question.userId}}</td> <!-- GET Userid from question -->
+            <td>{{question.questionText}}</td> <!-- GET question from question -->
 
             <tr>
               <th></th> <!-- Leave Empty -->
