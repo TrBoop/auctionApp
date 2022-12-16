@@ -57,7 +57,7 @@
                 });
                 await this.getUsers();
                 this.user = {};
-      },    
+            },    
         }
     }
 </script>
