@@ -1,3 +1,6 @@
+from http.client import HTTPResponse
+from urllib import request, response
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.viewsets import ModelViewSet
@@ -23,3 +26,16 @@ class QuestionViewSet(ModelViewSet):
 class AnswerViewSet(ModelViewSet):
     queryset = Bid.objects.all()
     serializer_class = AnswerSerializer
+
+def LoginView(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    #create a post request with username and pw taken from request body, pass from vue app
+    user = authenticate(username=username, password=password)
+    #if user not null, use login function
+    if user is not None:
+        login(request, user)
+        #redirect to main page
+    return HTTPResponse()
+
+    #access the session user as getUser()
