@@ -31,17 +31,45 @@
               </td>
     
             </tr>
-           
-          <tr>
-            <th scope="col">Q&A</th>
+          
+          
+          <tr> 
+            <th></th> <!-- Leave Empty -->
+            <th scope="col">Questions</th>
           </tr>
           <tr>
+            <th></th> <!-- Leave Empty -->
             <th scope="col">User</th>
             <th scope="col">Question</th>
           </tr>
-         
-         
           
+          <tr>  <!-- V-for questions -->
+            <td></td> <!-- Leave Empty -->
+            <td></td> <!-- GET Userid from question -->
+            <td></td> <!-- GET question from question -->
+
+            <tr>
+              <th></th> <!-- Leave Empty -->
+              <th></th> <!-- Leave Empty -->
+              <th scope="col">Answer</th>
+            </tr>
+
+            <tr>
+              <td></td> <!-- Leave Empty -->
+              <td></td> <!-- Leave Empty -->
+              <td></td> <!-- Leave Empty -->
+              <td>
+                <tr><textarea/></tr>
+                <tr><button type="button" class="btn btn-primary">Submit Answer</button></tr>
+              </td>
+            </tr>
+
+          </tr>
+
+          
+          
+
+
         </tbody>
       </table>
 
