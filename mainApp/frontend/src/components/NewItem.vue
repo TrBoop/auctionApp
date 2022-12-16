@@ -13,7 +13,7 @@
                     <br/>
                     <input type="date" id="inputEnd" class="form-control" required v-model="newAuction.itemFinishDate"/>
                     <br/>
-                    <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.itemTitle"/>
+                    <input type="number" id="inputStartPrice" class="form-control" placeholder="Starting Price" required v-model="newAuction.itemStartPrice"/>
                     <br/>
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <button class="btn btn-primary" type="submit" @click = "addAuction()">Submit Item</button>
@@ -40,8 +40,9 @@
             }
         },
         methods:{
+
             async addAuction(){
-        await fetch("http://127.0.0.1:8000/api/auction/",{
+        await fetch("http://127.0.0.1:8000/api/auction/?format=json",{
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
@@ -54,6 +55,12 @@
             var files = this.$$.img.files;
             this.newAuction.itemPicture.append('img', files[0]);
         },
+
+        async getAuctions(){
+        var response = await fetch("http://127.0.0.1:8000/api/auction/")
+        let data = await response.json()
+        this.auctions = data 
+      },
 
         } 
         
