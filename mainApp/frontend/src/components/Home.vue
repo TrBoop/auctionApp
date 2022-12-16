@@ -46,7 +46,15 @@
       return{
         questions: [],
         question:{
-          'auctionId'
+          'auctionId':'',
+          'questionText':'',
+          'userId':'',
+        },
+        answers:[],
+        answer:{
+          'questionId': '',
+          'answerText': '',
+          'userId': '',
         },
         auctions: [],
         auction:{
