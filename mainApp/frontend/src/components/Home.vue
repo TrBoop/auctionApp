@@ -20,12 +20,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle" v-for="auction in auctions" :key ="auction.itemFinishDate" @dblclick="$data.auction = auction" >
-            <td>{{auction.itemTitle}} </td>
-            <td><img src ={{auction.itemPicture}}/></td>
-            <td>{{auction.itemStartPrice}} </td>
-            <td>{{auction.itemFinishDate}}</td>
-            <td><button type="button" class="btn btn-primary">Info</button></td>
+          <tr class="align-middle" v-for="auction in auctions" :key ="auction.itemFinishDate" @dblclick="$data.auction = auction">
+              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
+ 
+              <td v-if="skippableDate(auction.itemFinishDate)"><img src ={{auction.itemPicture}}/></td>
+              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
+              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
+              <td v-if="skippableDate(auction.itemFinishDate)"><button type="button" class="btn btn-primary">Info</button></td>  
           </tr>
         </tbody>
       </table>
@@ -87,6 +88,18 @@
         await this.getAuctions();
         this.auction = {};
       },
+
+      skippableDate(date){
+            var now = new Date();
+            var skippableDate = now.setDate(now.getDate())  // this is getting next thursday
+	    var parseDate = Date.parse(date);
+
+            if(parseDate > skippableDate){
+                return true
+            }else{
+                return false
+            }
+        },
       }
 
   }

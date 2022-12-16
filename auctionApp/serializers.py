@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from auctionApp.models import CustomUser, Auction, Bid
+from auctionApp.models import CustomUser, Auction, Bid, Question, Answer
  
  
 class UserSerializer(serializers.ModelSerializer):
@@ -33,3 +33,21 @@ class BidSerializer(serializers.ModelSerializer):
                   'userId',
                   'bidAmount',
                   'auctionId'] 
+    
+class QuestionSerializer(serializers.ModelSerializer):
+#creates a dictionary for the data in our db 
+    class Meta:
+        model = Question
+        fields = ['id',
+                  'auctionId',
+                  'questionText',
+                  'userId'] 
+
+class AnswerSerializer(serializers.ModelSerializer):
+#creates a dictionary for the data in our db 
+    class Meta:
+        model = Answer
+        fields = ['id',
+                  'questionId',
+                  'answerText',
+                  'userId'] 
