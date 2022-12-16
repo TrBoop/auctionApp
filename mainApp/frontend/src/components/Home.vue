@@ -22,12 +22,15 @@
         <tbody>
           <tr class="align-middle" v-for="auction in auctions" :key ="auction.itemFinishDate" @dblclick="$data.auction = auction">
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
- 
               <td v-if="skippableDate(auction.itemFinishDate)"><img src ={{auction.itemPicture}}/></td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
-              <td v-if="skippableDate(auction.itemFinishDate)"><button type="button" class="btn btn-primary">Info</button></td>  
+              <td v-if="skippableDate(auction.itemFinishDate)"><button type="button" class="btn btn-primary">Info</button></td>
+              <div class="comments">
+                <p></p>
+              </div>  
           </tr>
+          <p>Hello</p>
         </tbody>
       </table>
 
@@ -41,6 +44,10 @@
     name: 'Home',
     data(){
       return{
+        questions: [],
+        question:{
+          'auctionId'
+        },
         auctions: [],
         auction:{
           'itemTitle':'',
@@ -100,6 +107,8 @@
                 return false
             }
         },
+
+
       }
 
   }
