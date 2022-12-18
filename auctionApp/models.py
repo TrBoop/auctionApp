@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from datetime import date
-import random, os
+import random
 from django.contrib.auth.models import UserManager
 
 class MyUserManager(UserManager):
@@ -77,10 +77,6 @@ class Auction(models.Model):
             'finish' : self.itemFinishDate,
             'owner' : self.ownerId,
         }
-    
-    @property
-    def filename(self):
-       return os.path.basename(self.file.name)
 
 
 class Bid(models.Model):

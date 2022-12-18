@@ -25,7 +25,7 @@
         <tbody class="align-middle" v-for="auction in auctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
           <tr style="background:#E1E1E1;" >
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
-              <td v-if="skippableDate(auction.itemFinishDate)"> <img :src="'src'+auction.itemPicture.substring(42)" width="100"/></td>
+              <td v-if="skippableDate(auction.itemFinishDate)"> <img :src="auction.itemPicture.substring(39)" width="100"/></td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
               <td v-if="skippableDate(auction.itemFinishDate)"></td>
@@ -165,12 +165,6 @@
             }else{
                 return false
             }
-        },
-
-        getSubstring(string) {
-          var substring = "../assets/";
-            substring += string.substring(50);
-          return substring;
         }
 
       }
