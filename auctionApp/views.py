@@ -1,11 +1,14 @@
 from http.client import HTTPResponse
 from urllib import request, response
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, views
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.viewsets import ModelViewSet
 from .models import CustomUser, Auction, Bid
 from .serializers import UserSerializer, AuctionSerializer, BidSerializer, QuestionSerializer, AnswerSerializer
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.forms import AuthenticationForm
+
 #Serializes data from db
 class UserViewSet(ModelViewSet):
     queryset = CustomUser.objects.all()
@@ -28,8 +31,10 @@ class AnswerViewSet(ModelViewSet):
     serializer_class = AnswerSerializer
 
 def LoginView(request):
-    username = request.POST['username']
+    authentication_form = AuthenticationForm
+    username = request.POST['username']  
     password = request.POST['password']
+
     #create a post request with username and pw taken from request body, pass from vue app
     user = authenticate(username=username, password=password)
     #if user not null, use login function

@@ -4,6 +4,23 @@ from datetime import date
 import random
 from django.contrib.auth.models import UserManager
 
+class MyUserManager(UserManager):
+
+    def create_user(self,email,username,password, dob, image=None):
+        if not email:
+            raise ValueError("Users must have a email address")
+        if not dob:
+            raise ValueError("Users must have a date of birth")
+        user = self.mode(
+            email = self.normalize_email(email),
+            username = username,
+            password = password,
+            dob = dob,
+            )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
 class CustomUser(AbstractUser):
 
 #resource used to construct model: https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
@@ -18,8 +35,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['userEmail', 'userDateOfBirth']
 
-    objects = UserManager()
-
+    objects = MyUserManager()
 
     """ Returns object name """
     def __str__(self):
@@ -34,7 +50,7 @@ class CustomUser(AbstractUser):
             'image' :self.userImage,
             'DateOfBirth' : self.userDateOfBirth,
         }
-        
+
     #orders db entries by email address and names the table User
     class Meta:
         ordering = ["userEmail"]
