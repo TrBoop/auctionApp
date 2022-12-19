@@ -30,11 +30,11 @@
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
               <td v-if="skippableDate(auction.itemFinishDate)"></td>
               <td v-if="skippableDate(auction.itemFinishDate)">
-                <tr ><input type=number min="0"/></tr>
+                <tr><input type=number min="0" class="bg-light border border-light text-dark" style="margin-bottom: 0.5rem;"/></tr>
                 <tr><button type="button" class="btn btn-primary">Bid Amount</button></tr>
               </td>
               <td v-if="skippableDate(auction.itemFinishDate)">
-                <tr><textarea/></tr>
+                <tr><textarea class="bg-light border border-light text-dark"/></tr>
                 <tr><button type="button" class="btn btn-primary">Submit Question</button></tr>
               </td>
     
@@ -68,7 +68,7 @@
               <td></td> <!-- Leave Empty -->
               <td></td> <!-- Leave Empty -->
               <td>
-                <tr><textarea/></tr>
+                <tr><textarea class="bg-light border border-light text-dark"/></tr>
                 <tr><button type="button" class="btn btn-primary">Submit Answer</button></tr>
               </td>
             </tr>

@@ -6,6 +6,7 @@ Dependencies:
 - Pillow
 - Bootstrap / Bootstrap-vue
 - Vue Router
+- Django Crispy Forms
 
 
 Group Members and Assigned Work:
