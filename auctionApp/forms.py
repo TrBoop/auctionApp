@@ -1,16 +1,76 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import CustomUser
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Row, Layout, Submit
+from crispy_forms.bootstrap import FormActions
 
-class CustomUserCreationForm(UserCreationForm):
 
-    class Meta:
-        model = CustomUser
-        fields = ("username", "userEmail", "userDateOfBirth", "userImage", "password")
+class LoginForm(forms.Form):
+    '''Form for user login'''
 
-class CustomUserChangeForm(UserChangeForm):
+    username = forms.CharField(
+        label='Username',
+        max_length=50,
+        widget=forms.TextInput(attrs={'autocomplete': 'username'})
+    )
+    password = forms.CharField(
+        label='Password',
+        max_length=50,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'password'})
+    )
 
-    class Meta:
-        model = CustomUser
-        fields = ("username", "userEmail", "userDateOfBirth", "userImage", "password")
+    helper = FormHelper()
+    helper.form_id = 'login-form'
+    helper.layout = Layout(
+        Row('username', css_class="mb-2"),
+        Row('password', css_class="mb-2"),
+        FormActions(
+            Submit('login', 'Log in', css_class="mt-2"),
+        )
+    )
+
+
+class SignupForm(forms.Form):
+    '''Form for user signup'''
+
+    username = forms.CharField(
+        label='Username',
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'username',
+            }
+        )
+    )
+    password = forms.CharField(
+        label='Password',
+        max_length=50,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'password'})
+    )
+    password_confirm = forms.CharField(
+        label='Confirm Password',
+        max_length=50,
+        widget=forms.PasswordInput,
+    )
+
+    userDateOfBirth = forms.DateField(
+        label="Date of Birth",
+        widget=forms.DateInput,
+    )
+    userEmail = forms.EmailField(
+        label="User Email",
+        widget=forms.EmailInput,
+    )
+
+    helper = FormHelper()
+    helper.form_id = 'signup-form'
+    helper.layout = Layout(
+        Row('username', css_class='mb-2'),
+        Row('password', css_class='mb-2'),
+        Row('password_confirm', css_class='mb-2'),
+        Row('userDateOfBirth', css_class='mb-2'),
+        Row('userEmail', css_class='mb-2'),
+        FormActions(
+            Submit('signup', 'Sign up', css_class="btn-primary"),
+            css_class='mt-3'
+        )
+    )

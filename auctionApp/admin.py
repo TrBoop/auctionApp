@@ -7,7 +7,7 @@ from .models import Question
 from .models import Answer
 
 
-admin.site.register(CustomUser)
+admin.site.register(CustomUser, UserAdmin)
 admin.site.register(Auction)
 admin.site.register(Bid)
 admin.site.register(Question)

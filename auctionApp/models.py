@@ -31,11 +31,14 @@ class CustomUser(AbstractUser):
 
     #images in a model: https://stackoverflow.com/questions/6396442/add-image-avatar-field-to-users
     userImage = models.ImageField(upload_to="mainApp/frontend/src/assets")
-
+    profile = models.OneToOneField(
+        to='Profile',
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['userEmail', 'userDateOfBirth']
-
-    objects = MyUserManager()
 
     """ Returns object name """
     def __str__(self):
@@ -117,3 +120,16 @@ class Answer(models.Model):
             'answer' : self.answerText,
             'question' : self.questionId,
         }
+
+class Profile(models.Model):
+    '''
+    A Profile is simply a bit of text and/or image
+    that a Member might or might not have, hence the
+    OneToOne relationship in Member with null=True
+    '''
+
+    text = models.CharField(max_length=4096)
+    userImage = models.ImageField(upload_to='mainApp/frontend/src/assets')
+
+    def __str__(self):
+        return f"{self.text}"

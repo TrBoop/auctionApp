@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
+AUTH_USER_MODEL = 'auctionApp.CustomUser'
+LOGIN_URL = '/login/'
 
 # Application definition
 
@@ -40,14 +42,14 @@ INSTALLED_APPS = [
     "corsheaders",
     "auctionApp",
     'mainApp',
+    'crispy_forms',
     'rest_framework',
 ]
 
-AUTH_USER_MODEL = 'auctionApp.CustomUser'
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.AllowAllUsersModelBackend',
-    'auctionApp.backends.CaseInsensitiveModelBackend',
-    )
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +64,6 @@ MIDDLEWARE = [
     
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
 
 CORS_ORIGIN_ALLOW_ALL = True   
 
