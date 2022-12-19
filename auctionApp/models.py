@@ -129,7 +129,7 @@ class Profile(models.Model):
     '''
 
     text = models.CharField(max_length=4096)
-    userImage = models.ImageField(upload_to='mainApp/frontend/src/assets')
+    userImage = models.ImageField(upload_to='mainApp/frontend/src/assets', default="mainapp/frontend/src/assets/default-profile.png")
 
     def __str__(self):
         return f"{self.text}"
