@@ -55,6 +55,8 @@
             <td></td> <!-- Leave Empty -->
             <td>{{question.userId}}</td> <!-- GET Userid from question -->
             <td>{{question.questionText}}</td> <!-- GET question from question -->
+    
+            
 
             <tr>
               <th></th> <!-- Leave Empty -->
@@ -120,6 +122,7 @@
     },
     async created(){
        await this.getAuctions();
+       await this.getQuestions();
       },
       methods:{
 
@@ -127,6 +130,12 @@
         var response = await fetch("http://127.0.0.1:8000/api/auction/")
         let data = await response.json()
         this.auctions = data 
+      },
+
+      async getQuestions(){
+        var response = await fetch("http://127.0.0.1:8000/api/question/")
+        let data = await response.json()
+        this.questions = data 
       },
 
       async addAuction(){

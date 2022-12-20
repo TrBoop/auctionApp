@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, views
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.viewsets import ModelViewSet
-from .models import CustomUser, Auction, Bid
+from .models import CustomUser, Auction, Bid, Question, Answer
 from .serializers import UserSerializer, AuctionSerializer, BidSerializer, QuestionSerializer, AnswerSerializer
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import AuthenticationForm
@@ -28,11 +28,11 @@ class BidViewSet(ModelViewSet):
     serializer_class = BidSerializer
 
 class QuestionViewSet(ModelViewSet):
-    queryset = Bid.objects.all()
+    queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
 class AnswerViewSet(ModelViewSet):
-    queryset = Bid.objects.all()
+    queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
 
 def signup_view(request):
