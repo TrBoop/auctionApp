@@ -64,13 +64,16 @@
               <th></th> <!-- Leave Empty -->
               <th></th> <!-- Leave Empty -->
               <th scope="col">Answer</th>
-              
+
             </tr>
 
-            <tr>
+            <tr v-for="answer in answers" :key="answer.answerId">
               <td></td> <!-- Leave Empty -->
               <td></td> <!-- Leave Empty -->
+              <td>{{answer.answerText}}</td> 
               <td></td> <!-- Leave Empty -->
+              
+              
               <td>
                 <tr><textarea class="bg-light border border-light text-dark"/></tr>
                 <tr><button type="button" class="btn btn-primary">Submit Answer</button></tr>
@@ -126,6 +129,7 @@
     async created(){
        await this.getAuctions();
        await this.getQuestions();
+       await this.getAnswers();
       },
       methods:{
 
@@ -141,6 +145,13 @@
         let data = await response.json()
         this.questions = data 
       },
+
+      async getAnswers(){
+        var response = await fetch("http://127.0.0.1:8000/api/answer/")
+        let data = await response.json()
+        this.answers = data 
+      },
+      
 
       async addAuction(){
         await this.getAuctions();
