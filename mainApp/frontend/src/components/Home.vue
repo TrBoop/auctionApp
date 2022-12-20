@@ -9,7 +9,7 @@
 <br/>
 <div class="row">
   <div class="input-group" style="margin-bottom:1rem;">
-    <input type="search" class="form-control rounded" placeholder="Search" />
+    <input type="search" class="form-control rounded" placeholder="Search" id="search" v-on:input="searchItem()" />
     <button type="button" class="btn btn-outline-primary">Search</button>
   </div>
   
@@ -17,14 +17,16 @@
         <thead>
           <tr>
             <th scope="col">Item Title</th>
+            <th scope="col">Item Description</th>
             <th scope="col">Image</th>
             <th scope="col">Start Price</th>
             <th scope="col">Ending</th>
           </tr>
         </thead>
-        <tbody class="align-middle" v-for="auction in auctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
+        <tbody class="align-middle" v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
           <tr style="background:#E1E1E1;" >
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
+              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemDescription}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)"> <img :src="auction.itemPicture.substring(39)" width="100"/></td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
               <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
@@ -110,6 +112,7 @@
           'userId': '',
         },
         auctions: [],
+        searchedAuctions: [],
         auction:{
           'itemTitle':'',
           'itemDescription':'',
@@ -130,6 +133,7 @@
         var response = await fetch("http://127.0.0.1:8000/api/auction/")
         let data = await response.json()
         this.auctions = data 
+        this.searchedAuctions = data
       },
 
       async getQuestions(){
@@ -174,7 +178,12 @@
             }else{
                 return false
             }
-        }
+        },
+
+        searchItem(){ 
+          var searchedAuction =document.getElementById('search').value; 
+          this.searchedAuctions = this.auctions.filter(auction => auction.itemTitle.toLowerCase().includes(searchedAuction) || auction.itemDescription.toLowerCase().includes(searchedAuction)); 
+        },
 
       }
 
