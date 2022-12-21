@@ -23,26 +23,27 @@
             <th scope="col">Ending</th>
           </tr>
         </thead>
-        <tbody class="align-middle" v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
-          <tr style="background:#E1E1E1;" >
-              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemTitle}} </td>
-              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemDescription}} </td>
-              <td v-if="skippableDate(auction.itemFinishDate)"> <img :src="auction.itemPicture.substring(39)" width="100"/></td>
-              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemStartPrice}} </td>
-              <td v-if="skippableDate(auction.itemFinishDate)">{{auction.itemFinishDate}}</td>
-              <td v-if="skippableDate(auction.itemFinishDate)"></td>
-              <td v-if="skippableDate(auction.itemFinishDate)">
+        <tbody class="align-middle" v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction" >
+          <tr style="background:#E1E1E1;" v-if="skippableDate(auction.itemFinishDate)" >
+              <td>{{auction.itemTitle}} </td>
+              <td>{{auction.itemDescription}} </td>
+              <td><img :src="auction.itemPicture.substring(39)" width="100"/></td>
+              <td>{{auction.itemStartPrice}} </td>
+              <td>{{auction.itemFinishDate}}</td>
+              <td></td>
+              <td>
                 <tr><input type=number min="0" class="bg-light border border-light text-dark" style="margin-bottom: 0.5rem;"/></tr>
                 <tr><button type="button" class="btn btn-primary">Bid Amount</button></tr>
               </td>
-              <td v-if="skippableDate(auction.itemFinishDate)">
+              <td>
                 <tr><textarea class="bg-light border border-light text-dark"/></tr>
                 <tr><button type="button" class="btn btn-primary">Submit Question</button></tr>
               </td>
+              
+              <td><router-link v-bind:to="item." class="nav-link">More Info</router-link></td>
+          </tr>
+          
     
-            </tr>
-          
-          
           <tr v-if="skippableDate(auction.itemFinishDate)"> 
             <th></th> <!-- Leave Empty -->
             <th scope="col">Questions</th>
@@ -53,7 +54,7 @@
             <th scope="col">Question</th>
           </tr>
           
-          <tr v-for="question in questions" :key="question.questionId">  
+          <tr v-for="question in questions" :key="question.questionId" v-if="skippableDate(auction.itemFinishDate)">  
             <td></td> <!-- Leave Empty -->
             <td>{{question.userId}}</td> <!-- GET Userid from question -->
             <td>{{question.questionText}}</td> <!-- GET question from question -->

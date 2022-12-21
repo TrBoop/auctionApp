@@ -14,6 +14,7 @@ from django.http import Http404
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
+
 #Serializes data from db
 class UserViewSet(ModelViewSet):
     queryset = CustomUser.objects.all()
