@@ -5,6 +5,7 @@ import Register from '../components/Register.vue'
 import Home from '../components/Home.vue'
 import Profile from '../components/Profile.vue'
 import NewItem from '../components/NewItem.vue'
+import Item from '../components/Item.vue'
 
 const routes = [
 	{
@@ -32,6 +33,7 @@ const routes = [
 		name: 'NewItem',
 		component: NewItem,
 	}
+	
 ]
 const router = createRouter({
 	history: createWebHistory(),

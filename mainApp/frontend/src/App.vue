@@ -1,6 +1,7 @@
 <template>
   <Navbar/>
   <router-view :key="$route.path" />
+  
 </template>
 
 <script>

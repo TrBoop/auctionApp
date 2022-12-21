@@ -12,92 +12,75 @@
     <input type="search" class="form-control rounded" placeholder="Search" id="search" v-on:input="searchItem()" />
     <button type="button" class="btn btn-outline-primary">Search</button>
   </div>
+</div>
+
+</div>
+
+<div v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
+  <div class="row" v-if="skippableDate(auction.itemFinishDate)">
+    <div class="col-5" style="">
+      <div class="card card-body ">
+        <img :src="auction.itemPicture.substring(39)" class="" width="200" max-height="300" style="margin-bottom:1rem; margin-left:auto; margin-right: auto;"/>
+        <h5 class="card-title">{{auction.itemTitle}}</h5>
+        <p class="card-text">{{auction.itemDescription}}</p>
+        <h4 class="card-text">£{{auction.itemStartPrice}}</h4>
+        <br/>
+        <h6 class="card-text">Ends: {{auction.itemFinishDate}}</h6>
+        <br/>
+        <input type=number min="0" class="bg-light border border-black text-dark card-text" style="margin-bottom: 0.5rem; font-size:large;"/>
+        <button type="button" class="btn btn-primary">Bid Amount</button>
+      </div>
+      
+      <br/>
   
-<table class="table border rounded bg-light shadow">
-        <thead>
-          <tr>
-            <th scope="col">Item Title</th>
-            <th scope="col">Item Description</th>
-            <th scope="col">Image</th>
-            <th scope="col">Start Price</th>
-            <th scope="col">Ending</th>
-          </tr>
-        </thead>
-        <tbody class="align-middle" v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction" >
-          <tr style="background:#E1E1E1;" v-if="skippableDate(auction.itemFinishDate)" >
-              <td>{{auction.itemTitle}} </td>
-              <td>{{auction.itemDescription}} </td>
-              <td><img :src="auction.itemPicture.substring(39)" width="100"/></td>
-              <td>{{auction.itemStartPrice}} </td>
-              <td>{{auction.itemFinishDate}}</td>
-              <td></td>
-              <td>
-                <tr><input type=number min="0" class="bg-light border border-light text-dark" style="margin-bottom: 0.5rem;"/></tr>
-                <tr><button type="button" class="btn btn-primary">Bid Amount</button></tr>
-              </td>
-              <td>
-                <tr><textarea class="bg-light border border-light text-dark"/></tr>
-                <tr><button type="button" class="btn btn-primary">Submit Question</button></tr>
-              </td>
-              
-              <td><router-link v-bind:to="item." class="nav-link">More Info</router-link></td>
-          </tr>
-          
+    </div>
+
     
-          <tr v-if="skippableDate(auction.itemFinishDate)"> 
-            <th></th> <!-- Leave Empty -->
-            <th scope="col">Questions</th>
-          </tr>
-          <tr v-if="skippableDate(auction.itemFinishDate)">
-            <th></th> <!-- Leave Empty -->
-            <th scope="col">User</th>
-            <th scope="col">Question</th>
-          </tr>
-          
-          <tr v-for="question in questions" :key="question.questionId" v-if="skippableDate(auction.itemFinishDate)">  
-            <td></td> <!-- Leave Empty -->
-            <td>{{question.userId}}</td> <!-- GET Userid from question -->
-            <td>{{question.questionText}}</td> <!-- GET question from question -->
-    
-            
 
-            <tr>
-              <th></th> <!-- Leave Empty -->
-              <th></th> <!-- Leave Empty -->
-              <th scope="col">Answer</th>
+    <br/>
+    <div class="container col-7">
+      <div class="card">
+        
+        <textarea class="bg-light border border-black text-dark"/>
+        <button type="button" class="btn btn-primary" v-bind:id="'questionBox'+auction.questionId">Submit Question</button>
+  
+        <br/>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseQuestion" aria-expanded="false" aria-controls="collapseQuestion">Show Questions</button>
 
-            </tr>
+          <div class="collapse" id="collapseQuestion" style="text-align:left" v-for="question in questions" :key="question.questionId">
+            <br/>
+            <h5 class="card-title">{{question.userId}}</h5>
+            <p>
+              {{question.questionText}}
+            </p>
 
-            <tr v-for="answer in answers" :key="answer.answerId">
-              <td></td> <!-- Leave Empty -->
-              <td></td> <!-- Leave Empty -->
-              <td>{{answer.answerText}}</td> 
-              <td></td> <!-- Leave Empty -->
-              
-              
-              <td>
-                <tr><textarea class="bg-light border border-light text-dark"/></tr>
-                <tr><button type="button" class="btn btn-primary">Submit Answer</button></tr>
-              </td>
-            </tr>
+            <div v-for="answer in answers" :key="answer.answerId" style="margin-left:5rem;">
+              <h6 class="card-title">{{answer.userId}}</h6>
+              <p>
+                {{answer.answerText}}
+              </p>
+            </div>
 
-          </tr>
+            <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="false" aria-controls="collapseAnswer" style="width:5rem; margin-left: auto;">Reply</button>
+            <br/>
+            <textarea class="bg-light border border-black text-dark collapse form-control" id="collapseAnswer"/>
+            <button type="button" class="btn btn-primary collapse" id="collapseAnswer" style="margin-left:87%; width:13%;">Submit Answer</button>
+          </div>
 
           
-          
-
-
-        </tbody>
-      </table>
-
+      </div>
+    </div>
+    <br/>
+  </div>
+  <br/>
 </div>
 
-</div>
+
 </template>
 
 <script>
 
- 
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'
         
   export default{
     name: 'Home',
