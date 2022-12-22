@@ -50,27 +50,35 @@
         <button type="button" class="btn btn-primary" v-bind:id="'questionBox'+auction.questionId">Submit Question</button>
   
         <br/>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseQuestion" aria-expanded="false" aria-controls="collapseQuestion">Show Questions</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ auction.id" aria-expanded="false" aria-controls="collapseQuestion">Show Q&A</button>
 
-          <div class="collapse" id="collapseQuestion" style="text-align:left" v-for="question in questions" :key="question.questionId">
+          <div class="collapse" :id="'collapse'+ auction.id" style="text-align:left" v-for="question in questions" :key="question.questionId">
             <br/>
-            <h5 class="card-title">{{question.userId}}</h5>
-            <p>
-              {{question.questionText}}
-            </p>
+              <div v-if="question.auctionId === auction.id">
+                <h5 class="card-title">{{question.userId}}</h5>
+                <p>
+                  {{question.questionText}}
+                </p>
+                <div v-for="answer in answers"> 
+                  <div v-show="answer.questionId === question.id" style="margin-left:5rem;">
+                    <h6 class="card-title">{{answer.userId}}</h6>
+                    <p>
+                      {{answer.answerText}}
+                    </p>
+                  </div>
+                </div>
 
-            <div v-for="answer in answers" :key="answer.answerId" style="margin-left:5rem;">
-              <h6 class="card-title">{{answer.userId}}</h6>
-              <p>
-                {{answer.answerText}}
-              </p>
-            </div>
+                <button type="button" class="btn btn-link" data-bs-toggle="collapse" :data-bs-target="'#collapseAnswer'+ question.id" aria-expanded="false" aria-controls="collapseAnswer">Reply</button>
+                <div class="collapse" :id="'collapseAnswer'+ question.id" >
+                <textarea class="bg-light border border-black text-dark form-control" />
+                <button type="button" class="btn btn-primary" style="margin-left:87%; width:13%;">Submit Answer</button>
+                </div>
+                
 
-            <button type="button" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="false" aria-controls="collapseAnswer" style="width:5rem; margin-left: auto;">Reply</button>
-            <br/>
-            <textarea class="bg-light border border-black text-dark collapse form-control" id="collapseAnswer"/>
-            <button type="button" class="btn btn-primary collapse" id="collapseAnswer" style="margin-left:87%; width:13%;">Submit Answer</button>
+              </div>
+            
           </div>
+          
 
           
       </div>
