@@ -46,7 +46,7 @@
     <div class="container col-7">
       <div class="card">
         
-        <textarea class="bg-light border border-black text-dark"/>
+        <textarea class="bg-light border border-black text-dark form-control" placeholder="Write your question here..."/>
         <button type="button" class="btn btn-primary" v-bind:id="'questionBox'+auction.questionId">Submit Question</button>
   
         <br/>
@@ -70,10 +70,11 @@
 
                 <button type="button" class="btn btn-link" data-bs-toggle="collapse" :data-bs-target="'#collapseAnswer'+ question.id" aria-expanded="false" aria-controls="collapseAnswer">Reply</button>
                 <div class="collapse" :id="'collapseAnswer'+ question.id" >
-                <textarea class="bg-light border border-black text-dark form-control" />
-                <button type="button" class="btn btn-primary" style="margin-left:87%; width:13%;">Submit Answer</button>
+                <textarea class="bg-light border border-black text-dark form-control" placeholder="Write your answer here..."/>
+                <button type="button" class="btn btn-primary" style="margin-left:85%; width:15%">Submit Answer</button>
                 </div>
                 
+                <hr/>
 
               </div>
             
@@ -84,6 +85,7 @@
       </div>
     </div>
     <br/>
+    <!-- Put a <hr/> tag here if you want to seperate each listing with a horizontal line -->
   </div>
   <br/>
 </div>
