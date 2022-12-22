@@ -19,20 +19,25 @@
 <div v-for="auction in searchedAuctions" :key="auction.itemFinishDate" @dblclick="$data.auction = auction">
   <div class="row" v-if="skippableDate(auction.itemFinishDate)">
     <div class="col-5" style="">
-      <div class="card card-body ">
-        <img :src="auction.itemPicture.substring(39)" class="" width="200" max-height="300" style="margin-bottom:1rem; margin-left:auto; margin-right: auto;"/>
-        <h5 class="card-title">{{auction.itemTitle}}</h5>
-        <p class="card-text">{{auction.itemDescription}}</p>
-        <h4 class="card-text">£{{auction.itemStartPrice}}</h4>
-        <br/>
-        <h6 class="card-text">Ends: {{auction.itemFinishDate}}</h6>
-        <br/>
-        <input type=number min="0" class="bg-light border border-black text-dark card-text" style="margin-bottom: 0.5rem; font-size:large;"/>
-        <button type="button" class="btn btn-primary">Bid Amount</button>
+      <div class="card">
+        <div class="row">
+          <div class="col-6">
+            <img :src="auction.itemPicture.substring(39)" class="" width="200" max-height="300" style="margin-bottom:1rem; margin-left:auto; margin-right: auto;"/>
+          </div>
+          <div class="col-6">
+            <h5 class="card-title">{{auction.itemTitle}}</h5>
+            <p class="card-text">{{auction.itemDescription}}</p>
+            <h4 class="card-text">£{{auction.itemStartPrice}}</h4>
+            <br/>
+            <h6 class="card-text">Ends: {{auction.itemFinishDate}}</h6>
+            <br/>
+            <input type=number min="0" class="bg-light border border-black text-dark card-text" style="margin-bottom: 0.5rem; font-size:large;"/>
+            <br/>
+            <button type="button" class="btn btn-primary">Bid Amount</button>
+          </div>
+        </div>
       </div>
-      
       <br/>
-  
     </div>
 
     
